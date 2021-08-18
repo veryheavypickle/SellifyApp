@@ -9,17 +9,26 @@ import SwiftUI
 
 struct SearchView: View {
     var body: some View {
-        ZStack {
-            //Background colour
-            Color("tabColour")
-                .ignoresSafeArea(.all)
-            
             NavigationView {
-                VStack{
-                    Text("Search screen")
+                ZStack {
+                    BackgroundView()
+                    ScrollView {
+                        VStack{
+                            ForEach(0..<100) {
+                                Text("Content \($0)")
+                            }
+                        }
+                        .navigationTitle("Search")
+                        .foregroundColor(Color("textColour"))
+                    }
                 }
-                .navigationTitle("Search")
             }
-        }
+    }
+}
+
+struct SearchView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchView()
+            .environment(\.colorScheme, .dark)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import VisualEffects
 
 struct ContentView: View {
     // This var is used to select the tabs
@@ -22,27 +23,30 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("backgroundColour1"), Color("backgroundColour2")]),
-                           startPoint: .top,
-                           endPoint: .bottomTrailing)
-                .ignoresSafeArea(.all)
+            AddItemView(showScreen: $showAddScreen)
+            
+            switch selectedIndex {
+            case 1:
+                SearchView()
+            case 3:
+                SearchView()
+            case 4:
+                SearchView()
+            default:  // case 0
+                SearchView()
+            }
+        
             VStack {
-                ZStack {
-                    AddItemView(showScreen: $showAddScreen)
-                    
-                    switch selectedIndex {
-                    case 1:
-                        SearchView()
-                    case 3:
-                        MessagesView()
-                    case 4:
-                        ProfileView()
-                    default:  // case 0
-                        HomeView()
-                    }
-                }
+                Spacer()
                 
                 // Tab Bar
+                
+                ZStack {
+                    // Tab bar background
+                    VisualEffectBlur(blurStyle: .systemUltraThinMaterial,
+                                     vibrancyStyle: .fill) {}
+                        .ignoresSafeArea()
+                        .frame(height: 56)
                 HStack {
                     // For each from 0 to 5
                     // equivilant to for number in range(5)
@@ -68,6 +72,7 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
+            }
             }
         }
     }
