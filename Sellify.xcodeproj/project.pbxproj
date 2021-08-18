@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		9B4065E426CC796C005815DD /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4065E326CC796C005815DD /* BackgroundView.swift */; };
+		9B622F6326CD8F2B0029A550 /* VisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 9B622F6226CD8F2B0029A550 /* VisualEffects */; };
 		9B970B0A26CC039C009E24A4 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B970B0926CC039C009E24A4 /* AddItemView.swift */; };
 		9B970B0C26CC05E8009E24A4 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B970B0B26CC05E8009E24A4 /* SearchView.swift */; };
 		9B970B1026CC07EA009E24A4 /* UniversalButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B970B0F26CC07EA009E24A4 /* UniversalButtons.swift */; };
@@ -15,9 +16,6 @@
 		9BA01AFB26CBE367005F65F8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA01AFA26CBE367005F65F8 /* ContentView.swift */; };
 		9BA01AFD26CBE368005F65F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BA01AFC26CBE368005F65F8 /* Assets.xcassets */; };
 		9BA01B0026CBE368005F65F8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BA01AFF26CBE368005F65F8 /* Preview Assets.xcassets */; };
-		9BA01B0826CBE3B3005F65F8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA01B0726CBE3B3005F65F8 /* HomeView.swift */; };
-		9BA01B0A26CBE3E8005F65F8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA01B0926CBE3E8005F65F8 /* ProfileView.swift */; };
-		9BA01B0C26CBE3F3005F65F8 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA01B0B26CBE3F3005F65F8 /* MessagesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +29,6 @@
 		9BA01AFC26CBE368005F65F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BA01AFF26CBE368005F65F8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BA01B0126CBE368005F65F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BA01B0726CBE3B3005F65F8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		9BA01B0926CBE3E8005F65F8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		9BA01B0B26CBE3F3005F65F8 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B622F6326CD8F2B0029A550 /* VisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,9 +68,6 @@
 				9B970B0F26CC07EA009E24A4 /* UniversalButtons.swift */,
 				9B970B0B26CC05E8009E24A4 /* SearchView.swift */,
 				9B970B0926CC039C009E24A4 /* AddItemView.swift */,
-				9BA01B0926CBE3E8005F65F8 /* ProfileView.swift */,
-				9BA01B0B26CBE3F3005F65F8 /* MessagesView.swift */,
-				9BA01B0726CBE3B3005F65F8 /* HomeView.swift */,
 				9BA01AFC26CBE368005F65F8 /* Assets.xcassets */,
 				9BA01B0126CBE368005F65F8 /* Info.plist */,
 				9BA01AFE26CBE368005F65F8 /* Preview Content */,
@@ -106,6 +99,9 @@
 			dependencies = (
 			);
 			name = Sellify;
+			packageProductDependencies = (
+				9B622F6226CD8F2B0029A550 /* VisualEffects */,
+			);
 			productName = Sellify;
 			productReference = 9BA01AF526CBE367005F65F8 /* Sellify.app */;
 			productType = "com.apple.product-type.application";
@@ -133,6 +129,9 @@
 				Base,
 			);
 			mainGroup = 9BA01AEC26CBE367005F65F8;
+			packageReferences = (
+				9B622F6126CD8F2B0029A550 /* XCRemoteSwiftPackageReference "VisualEffects" */,
+			);
 			productRefGroup = 9BA01AF626CBE367005F65F8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,12 +159,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4065E426CC796C005815DD /* BackgroundView.swift in Sources */,
-				9BA01B0C26CBE3F3005F65F8 /* MessagesView.swift in Sources */,
 				9B970B1026CC07EA009E24A4 /* UniversalButtons.swift in Sources */,
 				9B970B0A26CC039C009E24A4 /* AddItemView.swift in Sources */,
-				9BA01B0A26CBE3E8005F65F8 /* ProfileView.swift in Sources */,
 				9B970B0C26CC05E8009E24A4 /* SearchView.swift in Sources */,
-				9BA01B0826CBE3B3005F65F8 /* HomeView.swift in Sources */,
 				9BA01AFB26CBE367005F65F8 /* ContentView.swift in Sources */,
 				9BA01AF926CBE367005F65F8 /* SellifyApp.swift in Sources */,
 			);
@@ -356,6 +352,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9B622F6126CD8F2B0029A550 /* XCRemoteSwiftPackageReference "VisualEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/VisualEffects";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9B622F6226CD8F2B0029A550 /* VisualEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B622F6126CD8F2B0029A550 /* XCRemoteSwiftPackageReference "VisualEffects" */;
+			productName = VisualEffects;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9BA01AED26CBE367005F65F8 /* Project object */;
 }

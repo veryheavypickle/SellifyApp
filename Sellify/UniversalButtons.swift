@@ -33,6 +33,6 @@ struct SpecialTabButtonLabelView: View {
             .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .background(Color("middleTabBackground"))
             .cornerRadius(25)
-            .padding()
+            .padding(.bottom, 4)
     }
 }
