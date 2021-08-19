@@ -13,12 +13,13 @@ struct HomeView: View {
     @Binding var selectedIndex: Int
     var body: some View {
         VStack() {
-            SearchBar(searchQuery: $searchQuery)
+            SearchButton(function: {
+                showSearchScreen = true
+                selectedIndex = 1
+            })
             ScrollView(.vertical, showsIndicators: false,
                        content: {
-                        CategoryRect(title: "Open search bar", function: {showSearchScreen = true
-                            selectedIndex = 1
-                        })
+                        CategoryRect(title: "", function: {})
                             .padding(.leading)
                             .padding(.trailing)
                         HStack {

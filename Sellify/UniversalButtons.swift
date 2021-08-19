@@ -15,9 +15,7 @@ struct TabButton: View {
     var function: () -> Void
     
     var body: some View {
-        Button(action: {
-            self.function()
-        }, label: {
+        Button(action: {self.function()}, label: {
             Image(systemName: iconName)
                 .font(.system(size: 25, weight: .regular, design: .default))
                 // If currently selected, show the icon as black, else gray
@@ -31,9 +29,7 @@ struct SpecialTabButton: View {
     var function: () -> Void
     
     var body: some View {
-        Button(action: {
-            self.function()
-        }, label: {
+        Button(action: {self.function()}, label: {
             Image(systemName: iconName)
                 .font(.system(size: 25, weight: .regular, design: .default))
                 .foregroundColor(Color("BackgroundColour1"))
@@ -49,9 +45,7 @@ struct CategoryRect: View {
     var title: String
     var function: () -> Void
     var body: some View {
-        Button(action: {
-            self.function()
-        }, label: {
+        Button(action: {self.function()}, label: {
             ZStack {
                 Rectangle()
                     .fill(Color("Colour3"))
@@ -70,6 +64,38 @@ struct CategoryRect: View {
                     Spacer()
                 }
             }
+        })
+    }
+}
+
+struct SearchButton: View {
+    // This button looks identical to the search bar
+    var function: () -> Void
+    var body: some View {
+        Button(action: {self.function()}, label: {
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(Color("InverseColour"))
+                Text("Search")
+                    .foregroundColor(.gray)
+                Spacer()
+            }
+            .padding(.vertical, 10)
+            .padding(.horizontal)
+            .background(Color("BackgroundColour2"))
+            .cornerRadius(8)
+            .padding(.horizontal)
+        })
+    }
+}
+
+struct DismissButton: View {
+    var function: () -> Void
+    var body: some View {
+        Button(action: {self.function()}, label: {
+            Image(systemName: "xmark.circle.fill")
+                .foregroundColor(Color("InverseColour"))
         })
     }
 }

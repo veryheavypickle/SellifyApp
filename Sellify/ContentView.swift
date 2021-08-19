@@ -20,23 +20,26 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                BackgroundView(showCircles: true)
-                AddItemView(showScreen: $showAddScreen)
+                BackgroundView(showCircles: true).zIndex(1)
+                AddItemView(showScreen: $showAddScreen).zIndex(2)
                 
                 switch selectedIndex {
                 case 1:
-                    Empty()
+                    Empty().zIndex(2)
                 case 3:
-                    Empty()
+                    Empty().zIndex(2)
                 case 4:
                     Empty()
                 default:  // case 0
-                    HomeView(showSearchScreen: $showSearchScreen, selectedIndex: $selectedIndex)
+                    HomeView(showSearchScreen: $showSearchScreen, selectedIndex: $selectedIndex).zIndex(2)
                 }
-                SearchView(showView: $showSearchScreen)
+                SearchView()
+                    .zIndex(showSearchScreen ? 2 : 0)
+                    .disabled(!showSearchScreen)
                 TabBar(selectedIndex: $selectedIndex,
                        showAddScreen: $showAddScreen,
                        showSearchScreen: $showSearchScreen)
+                    .zIndex(3)
             }
         }
     }
