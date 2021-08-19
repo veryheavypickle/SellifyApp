@@ -16,7 +16,7 @@ struct BackgroundView: View {
     var body: some View {
         //Background colour
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("backgroundColour1"), Color("backgroundColour2")]),
+            LinearGradient(gradient: Gradient(colors: [Color("BackgroundColour1"), Color("BackgroundColour2")]),
                            startPoint: .top,
                            endPoint: .bottom)
                 .ignoresSafeArea()
@@ -52,7 +52,7 @@ struct Circles: View {
         let big = screenWidth * 0.5
         let halfBig = big/2
         MovingBackgroundCircle(endX: screenWidth - halfSmall - 10, x: screenWidth + halfSmall + 10, y: small, height: small)
-            .foregroundColor(Color("middleTabBackground"))
+            .foregroundColor(Color("Colour3"))
         MovingBackgroundCircle(endX: halfBig + 10, x: -halfBig, y: big, height: big)
             .foregroundColor(Color("Colour2"))
             
@@ -69,7 +69,7 @@ struct MovingBackgroundCircle: View {
             .frame(width: height, height: height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .position(x: x, y: y)
             .onAppear() {
-                let baseAnimation = Animation.easeIn(duration: 0.5)
+                let baseAnimation = Animation.easeOut(duration: 0.5)
                 
                 withAnimation(baseAnimation) {
                     x = endX
@@ -88,7 +88,7 @@ struct Dots: View {
             Rectangle()
                 .size(width: 5, height: 5)
                 .padding(.leading, CGFloat.random(in: 0..<BackgroundView.screenWidth))
-                .padding(.top, CGFloat.random(in: 0..<BackgroundView.screenHeight)).foregroundColor(Color("middleTabBackground"))
+                .padding(.top, CGFloat.random(in: 0..<BackgroundView.screenHeight)).foregroundColor(Color("Colour3"))
         }
     }
 }

@@ -15,6 +15,7 @@ struct ContentView: View {
     // This var is used to select the tabs
     @State var selectedIndex = 0
     @State var showAddScreen = false
+    @State var showSearchScreen = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -24,17 +25,18 @@ struct ContentView: View {
                 
                 switch selectedIndex {
                 case 1:
-                    SearchView()
+                    Empty()
                 case 3:
-                    SearchView()
+                    Empty()
                 case 4:
-                    SearchView()
+                    Empty()
                 default:  // case 0
-                    HomeView(height: geometry.size.height)
+                    HomeView(showSearchScreen: $showSearchScreen, selectedIndex: $selectedIndex)
                 }
-            
+                SearchView(showView: $showSearchScreen)
                 TabBar(selectedIndex: $selectedIndex,
-                       showAddScreen: $showAddScreen)
+                       showAddScreen: $showAddScreen,
+                       showSearchScreen: $showSearchScreen)
             }
         }
     }
@@ -44,6 +46,7 @@ struct TabBar: View {
     
     @Binding var selectedIndex: Int
     @Binding var showAddScreen: Bool
+    @Binding var showSearchScreen: Bool
     
     var body: some View {
         VStack {
@@ -53,7 +56,7 @@ struct TabBar: View {
                     number in
                     
                     Spacer()
-                    TabIcon(number: number, selectedIndex: $selectedIndex, showAddScreen: $showAddScreen)
+                    TabIcon(number: number, selectedIndex: $selectedIndex, showAddScreen: $showAddScreen, showSearchScreen: $showSearchScreen)
                     Spacer()
                 }
             }
@@ -67,27 +70,30 @@ struct TabIcon: View {
     var number: Int
     @Binding var selectedIndex: Int
     @Binding var showAddScreen: Bool
+    @Binding var showSearchScreen: Bool
     
     let icons = [
         "house.fill",
-        "magnifyingglass.circle.fill",
+        "magnifyingglass",
         "plus",
         "message.fill",
-        "person.circle.fill"]
+        "person.fill"]
     
     var body: some View {
-        // If middle icon
-        if number == 2 {
-            Button(action: {
-                self.showAddScreen.toggle()
-            }, label: {
-                SpecialTabButtonLabelView(iconName: icons[number])
+        // if search icon
+        if number == 1 {
+            TabButton(iconName: icons[number], selected: self.selectedIndex == number, function: {
+                    self.selectedIndex = number
+                    self.showSearchScreen = true
+            })
+        } else if number == 2 { // If middle icon
+            SpecialTabButton(iconName: icons[number],function: { self.showAddScreen.toggle()
+                self.showSearchScreen = false
             })
         } else {
-            Button(action: {
-                self.selectedIndex = number
-            }, label: {
-                TabButtonLabelView(iconName: icons[number], selected: self.selectedIndex == number)
+            TabButton(iconName: icons[number], selected: self.selectedIndex == number, function: {
+                    self.selectedIndex = number
+                    self.showSearchScreen = false
             })
         }
     }
