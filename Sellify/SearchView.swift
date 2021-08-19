@@ -8,35 +8,37 @@
 import SwiftUI
 
 struct SearchView: View {
-    @Binding var showView: Bool
     @State var searchQuery = ""
+    @State var recentlySearched = getRecentlySearched()
     
     var body: some View {
-            VStack {
-                VStack {
-                // Title
-                HStack {
-                    Text("Search")
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .font(.largeTitle)
-                        .foregroundColor(Color("InverseColour"))
-                    Spacer()
-                }
-                .padding()
-                        
-                SearchBar(searchQuery: $searchQuery)
-            }
-                    
-            ScrollView(.vertical, showsIndicators: true,
-                        content: {
-                        VStack (spacing: 15){
-                            ForEach(0..<100) { number in
-                                Product(title: "Product \(number)")
+        VStack {
+            SearchBar(searchQuery: $searchQuery)
+                .onChange(of: searchQuery, perform: { value in
+                    if searchQuery == "" {
+                        updateRecentlySearched()
                     }
-                            Empty()
+                })
+                    
+            ScrollView(.vertical, showsIndicators: true, content: {
+                VStack (spacing: 15){
+                    ForEach(recentlySearched, id: \.self) { recent in
+                        RecentlySearchedView(title: recent)
+                    }
+                    Button(action: {
+                        deleteSearchHistory()
+                        updateRecentlySearched()
+                    }, label: {
+                        Text("Clear search history")
+                    })
+                Empty()
                 }
             })
-        }.opacity(showView ? 1 : 0)
+        }.background(TransparantBackground())
+    }
+    
+    func updateRecentlySearched() -> Void {
+        recentlySearched = getRecentlySearched()
     }
 }
 
@@ -45,4 +47,32 @@ struct SearchView_Prefiews: PreviewProvider {
         ContentView()
             .environment(\.colorScheme, .dark)
     }
+}
+
+func getRecentlySearched() -> [String] {
+    var recents: [String]
+    recents = UserDefaults.standard.stringArray(forKey: "RecentSearches") ?? [""]
+    // If recents is not valid, return empty string array
+    return recents
+}
+
+func search(searchTerm: String) {
+    if searchTerm != "" {
+        var recents = getRecentlySearched()
+        recents.insert(searchTerm, at: 0)
+        var recentsSized: [String] = []
+        if recents.count > 10 {
+            for i in 0..<10 {
+                recentsSized.append(recents[i])
+            }
+        } else {
+            recentsSized = recents
+        }
+        UserDefaults.standard.set(recentsSized, forKey: "RecentSearches")
+    }
+}
+
+func deleteSearchHistory() -> Void {
+    let empty: [String] = []
+    UserDefaults.standard.set(empty, forKey: "RecentSearches")
 }
