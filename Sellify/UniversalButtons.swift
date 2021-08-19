@@ -36,3 +36,13 @@ struct SpecialTabButtonLabelView: View {
             .padding(.bottom, 4)
     }
 }
+
+struct CategoryRect: View {
+    var body: some View {
+        Rectangle()
+            .fill(Color("middleTabBackground"))
+            .opacity(0.5)
+            .background(TransparantBackground())
+            .cornerRadius(30)
+    }
+}

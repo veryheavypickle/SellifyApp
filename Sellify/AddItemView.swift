@@ -13,7 +13,7 @@ struct AddItemView: View {
     var body: some View {
             Spacer().fullScreenCover(isPresented: $showScreen, content: {
                 ZStack {
-                    BackgroundView()
+                    BackgroundView(showCircles: false)
                     VStack {
                         Text("Add screen")
                             .foregroundColor(Color("textColour"))
