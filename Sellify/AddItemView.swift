@@ -16,7 +16,7 @@ struct AddItemView: View {
                     BackgroundView(showCircles: false)
                     VStack {
                         Text("Add screen")
-                            .foregroundColor(Color("textColour"))
+                            .foregroundColor(Color("InverseColour"))
                         Spacer()
                         Button(action: {
                             self.showScreen.toggle()
@@ -24,7 +24,7 @@ struct AddItemView: View {
                             Text("Hide cover")
                                 .frame(width: 200, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 .background(Color.red)
-                                .foregroundColor(Color("textColour"))
+                                .foregroundColor(Color("InverseColour"))
                                 .cornerRadius(12)
                         })
                         Spacer()

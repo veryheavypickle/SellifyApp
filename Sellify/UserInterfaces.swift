@@ -14,19 +14,20 @@ struct SearchBar: View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 18, weight: .bold))
-                .foregroundColor(Color("textColour"))
+                .foregroundColor(Color("InverseColour"))
             TextField("Search", text: $searchQuery)
-                .foregroundColor(Color("textColour"))
+                .foregroundColor(Color("InverseColour"))
         }
         .padding(.vertical, 10)
         .padding(.horizontal)
-        .background(Color("backgroundColour1"))
+        .background(Color("BackgroundColour2"))
         .cornerRadius(8)
         .padding(.horizontal)
     }
 }
 
 struct Product: View {
+    var title: String
     var body: some View {
         HStack {
             Image(systemName: "house")
@@ -35,14 +36,14 @@ struct Product: View {
                 .padding()
             VStack {
                 HStack {
-                    Text("Product Title")
-                        .foregroundColor(Color("textColour"))
+                    Text(title)
+                        .foregroundColor(Color("InverseColour"))
                         .font(.title)
                     Spacer()
                 }
                 HStack {
                     Text("Information about this product")
-                        .foregroundColor(Color("textColour"))
+                        .foregroundColor(Color("InverseColour"))
                     Spacer()
                 }
                 HStack {
@@ -60,6 +61,14 @@ struct Product: View {
         }
         .background(TransparantBackgroundHeavy())
         .cornerRadius(10)
+    }
+}
+
+struct Empty: View{
+    var body: some View{
+        Rectangle()
+            .opacity(0)
+            .frame(height: 70)
     }
 }
 
